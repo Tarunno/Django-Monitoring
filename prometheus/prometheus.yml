@@ -12,3 +12,13 @@ scrape_configs:
     static_configs:
       - targets:
           - 'localhost:9187' 
+
+  - job_name: 'flower'
+    static_configs:
+      - targets: 
+          - 'localhost:5555'
+
+  - job_name: 'celey'
+    static_configs:
+      - targets: 
+          - 'localhost:9808'

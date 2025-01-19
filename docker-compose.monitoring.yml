@@ -3,9 +3,29 @@ services:
   postgres_exporter:
     image: prometheuscommunity/postgres-exporter:latest
     environment:
-      DATA_SOURCE_NAME: "postgresql://postgres:password@host:5432/mahadi?sslmode=disable"
+      DATA_SOURCE_NAME: "postgresql://postgres:password@host:5432/database?sslmode=disable"
     ports:
       - "9187:9187"  
+
+  flower:
+    image: mher/flower:0.9.7
+    command: >
+      --broker=redis://:password@host:6379/1
+      --address=0.0.0.0
+      --port=5555
+      --enable-prometheus
+    ports:
+      - "5555:5555"
+
+  celery-exporter:
+    image: danihodovic/celery-exporter:latest
+    command: --broker-url=redis://:password@host:6379/1
+    ports:
+      - "9808:9808"
+    depends_on:
+      - flower
+    environment:
+      - CELERY_BROKER_URL=redis://:password@host:6379/1
 
   prometheus:
     image: prom/prometheus:v2.31.0

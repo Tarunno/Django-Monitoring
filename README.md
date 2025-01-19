@@ -4,8 +4,10 @@
     <li><b>PostgreSQL Database:</b> 9628</li>
 </ul>
 
-# Django Postgres - Prometheus + Grafana 
+# Django Postgres - Prometheus + Grafana
+```bash 
 docker-compose -f docker-compose.monitoring.yml up --build
+```
 
 # Django Setups
 Install `django_prometheus`
