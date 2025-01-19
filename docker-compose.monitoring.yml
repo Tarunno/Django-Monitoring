@@ -1,0 +1,27 @@
+version: '3.6'
+services:
+  postgres_exporter:
+    image: prometheuscommunity/postgres-exporter:latest
+    environment:
+      DATA_SOURCE_NAME: "postgresql://postgres:password@host:5432/mahadi?sslmode=disable"
+    ports:
+      - "9187:9187"  
+
+  prometheus:
+    image: prom/prometheus:v2.31.0
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+      - ./prometheus_data:/prometheus  
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'  
+    network_mode: host
+
+  grafana:
+    image: grafana/grafana:8.5.5
+    network_mode: host
+    environment:
+      GF_SECURITY_ADMIN_USER: mahadi
+      GF_SECURITY_ADMIN_PASSWORD: mahadi123
+    volumes:
+      - ./grafana_data:/var/lib/grafana 
