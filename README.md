@@ -1,10 +1,10 @@
 # Dashboards 
 <ul>
-    <li>Django: 17658</li>
-    <li>PostgreSQL Database: 9628</li>
+    <li><b>Django:</b> 17658</li>
+    <li><b>PostgreSQL Database:</b> 9628</li>
 </ul>
 
-# Django Postgres - Prometheus + Grafana
+# Django Postgres - Prometheus + Grafana 
 docker-compose -f docker-compose.monitoring.yml up --build
 
 # Django Setups
