@@ -2,9 +2,10 @@
 <ul>
     <li><b>Django:</b> 17658</li>
     <li><b>PostgreSQL Database:</b> 9628</li>
+    <li><b>Celery:</b> 17508 </li>
 </ul>
 
-# Django Postgres - Prometheus + Grafana
+# Django Postgres Celery - Prometheus Grafana
 ```bash 
 docker-compose -f docker-compose.monitoring.yml up --build
 ```
